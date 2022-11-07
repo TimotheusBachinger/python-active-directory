@@ -59,8 +59,8 @@ class Decoder(object):
         netbios_domain = self._decode_rfc1035()
         netbios_hostname = self._decode_rfc1035()
         user = self._decode_rfc1035()
-        client_site = self._decode_rfc1035()
         server_site = self._decode_rfc1035()
+        client_site = self._decode_rfc1035()
         return Reply(type=type, flags=flags, domain_guid=domain_guid,
                      forest=forest, domain=domain, hostname=hostname,
                      netbios_domain=netbios_domain,
@@ -260,7 +260,7 @@ class Client(object):
                 if not self.m_queries:
                     break
                 try:
-                    data, addr = self.m_socket.recvfrom(self._bufsize,  
+                    data, addr = self.m_socket.recvfrom(self._bufsize,
                                                         socket.MSG_DONTWAIT)
                 except socket.error as err:
                     error = err.args[0]
